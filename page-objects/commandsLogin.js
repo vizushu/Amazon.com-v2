@@ -37,27 +37,77 @@ var loginCommands = {
 	},
 	accountPage: function () {
 		return this
-	
+
 			.waitForElementPresent('@accList', 1000)
 			.verify.elementPresent('@accList')
 			.assert.visible('@accList')
 			.verify.containsText('@accList', data.account)
 			.moveToElement('@accList', 10, 30)
 			.click('@accList')
+		browser
+			.pause(2000)
+			this
 	},
-	validErrorEmail: function (errorMessage) {
+	validErrorEmail: function ( ) {
 		return this
 			.verify.valueContains('@inputEmail', '')
 			.click('@contButton')
-			.verify.containsText('@error', errorMessage)
+			.verify.containsText('@error',  )
 			.verify.visible('@error')
 	},
-	validErrorPass: function (errorMessage) {
+	validErrorPass: function ( ) {
 		return this
 			.verify.valueContains('@inputPass', '')
 			.click('@signInBut')
-			.verify.containsText('@error', errorMessage)
+			.verify.containsText('@error',  )
 			.verify.visible('@error')
+	},
+	createAccountPage: function () {
+		return this
+			.click('@accList')
+			.waitForElementVisible('body', 2000)
+			// .assert.visible('@amaIcon')
+			// .assert.title('Amazon Sign In')
+			.verify.elementPresent('@cr8Acc')
+			.verify.containsText('@cr8Acc', 'Create your Amazon account')
+			.click('@cr8Acc')
+
+			.assert.title('Amazon Registration')
+			.verify.elementPresent('@newNameInput')
+			.assert.visible('@urName')
+			.verify.containsText('@urName', 'Your name')
+
+			.verify.elementPresent('@newEmailInput')
+			.assert.visible('@urEmail')
+			.verify.containsText('@urEmail', 'Email')
+
+			.verify.elementPresent('@newPassInput')
+			.assert.visible('@urPass')
+			.verify.containsText('@urPass', 'Password')
+
+			.verify.elementPresent('@rePassInput')
+			.assert.visible('@urRePass')
+			.verify.containsText('@urRePass', 'Re-enter password')
+	},
+	createAccount: function (yourname, email, password, repassword ) {
+		return this
+			.waitForElementVisible('body', 2000)
+			.setValue('@newNameInput', yourname)
+			.setValue('@newEmailInput', email)
+			.setValue('@newPassInput', password)
+			.setValue('@rePassInput', repassword)
+			.click('@contButton')
+
+	},
+	createAccountError: function (error) {
+		return this
+			.waitForElementVisible('body', 2000)
+			.verify.valueContains('@newNameInput', '')
+			.click('@contButton')
+			.verify.containsText('@cr8Error', 'Enter a valid email address')
+			.verify.visible('@cr8Error', 'Passwords must be at least 6 characters.')
+			
+			
 	},
 
 };
@@ -94,11 +144,17 @@ module.exports = {
 		cart: 'a[href="/gp/cart/view.html/ref=nav_cart',
 
 		//Create account
-		newNameInput: 'input[type="text',
+		newNameInput: 'input[type="text"]',
 		newEmailInput: '#ap_email',
 		newPassInput: '#ap_password',
 		rePassInput: '#ap_password_check',
 		contButton: '#continue', //BUTTON
+		
+		cr8Error: 'div[class="a-alert-content"]',
+		cr8invalidEmail: '#auth-email-invalid-email-alert',
+		cr8emailMiss: '#auth-email-missing-alert',
+		cr8nameMiss: '#auth-customerName-missing-alert',
+		cr8passMiss: '#auth-password-missing-alert',
 
 		urName: 'label[for="ap_customer_name',
 		urEmail: 'label[for="ap_email',
