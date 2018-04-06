@@ -34,12 +34,15 @@ var loginCommands = {
 		return this
 			.verify.visible('@contButton', )
 			.click('@contButton')
-			.click('@signInBut')
 	},
 	accountPage: function () {
 		return this
+	
 			.waitForElementPresent('@accList', 1000)
+			.verify.elementPresent('@accList')
+			.assert.visible('@accList')
 			.verify.containsText('@accList', data.account)
+			.moveToElement('@accList', 10, 30)
 			.click('@accList')
 	},
 	validErrorEmail: function (errorMessage) {
