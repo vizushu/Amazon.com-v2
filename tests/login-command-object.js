@@ -1,64 +1,96 @@
+const data = require('../test-assets/testData')
 
 module.exports = {
-  'Login Page Initial Render': function(browser) {
+  // 'Login Page Initial Render': function (browser) {
+  //   var login = browser.page.commandsLogin();
+
+  //   login.navigate()
+  //     .validatePage()
+
+  //   browser.end();
+  // },
+
+
+  'Login with a invalid email and valid password': function (browser) {
     var login = browser.page.commandsLogin();
 
     login.navigate()
-      .validateForm()
+      .validatePage()
+    browser
+      .pause(2000)
+    login
+      .accountPage()
+    browser
+      .pause(5000)
+    login
+      .loginPage()
+      .fillInForm('invalid@invalidemail.com', 'landway32')
+      .validErrorEmail('There was a problem')
+  
 
     browser.end();
   },
 
 
+  // 'Login with invalid email and invalid password': function (browser) {
+  //   var login = browser.page.commandsLogin();
 
-  'Try to login with no username or password': function(browser) {
-    var login = browser.page.commandsLogin();
-    
-    login.navigate()
-      .submit()
-      .validateError('Username and Password is empty')
+  //   login.navigate()
+  //     .validatePage()
+  //   browser
+  //     .pause(2000)
+  //   login
+  //     .accountPage()
+  //   browser
+  //     .pause(5000)
+  //   login
+  //     .loginPage()
+  //     .fillInForm('asd', 'dasd')
+  //     .validErrorEmail('There was a problem')
+  //     // .submit()
 
-    browser.end();
-  },
-
-
-
-  'Try to login with a username and no password': function(browser) {
-    var login = browser.page.commandsLogin();
-
-    login.navigate()
-      .fillInForm('abc', '')
-      .submit()
-      .validateError('Password is empty')
-
-    browser.end();
-  },
+  //   browser.end();
+  // },
 
 
+  // 'Login with a valid email and invalid password': function (browser) {
+  //   var login = browser.page.commandsLogin();
 
-  'Try to login with a password and no username': function(browser) {
-    var login = browser.page.commandsLogin();
+  //   login.navigate()
+  //     .validatePage()
+  //   browser
+  //     .pause(2000)
+  //   login
+  //     .accountPage()
+  //   browser
+  //     .pause(5000)
+  //   login
+  //     .loginPage()
+  //     .fillInForm('pcholo_anilao@yahoo.com', 'dasd')
+  //     .submit('@contButton')
+  //     .fillInForm('pcholo_anilao@yahoo.com', 'dasd')
+  //     .passPage()
+  //     .validErrorPass('There was a problem')
+  //     .click('@signInBut')
 
-    login.navigate()
-      .fillInForm('', 'test')
-      .submit()
-      .validateError('Username is empty')
+  //   browser.end();
+  // },
 
-    browser.end();
-  },
+  // 'Login with valid email and valid password': function (browser) {
+  //   var login = browser.page.commandsLogin();
 
+  //   login.navigate()
+  //     .validatePage()
+  //   browser
+  //     .pause(2000)
+  //   login
+  //     .accountPage()
+  //     .loginPage()
+  //     .fillInForm(data.username, data.password)
+  //     .submit()
 
-
-  'Enter wrong username and password': function(browser) {
-    var login = browser.page.commandsLogin();
-
-    login.navigate()
-      .fillInForm('abc', '123')
-      .submit()
-      .validateError('Invalid Username and/or Password')
-
-    browser.end();
-  }
+  //   browser.end();
+  // }
 
 
 };
