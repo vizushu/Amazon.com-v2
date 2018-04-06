@@ -26,7 +26,7 @@ module.exports = {
       .loginPage()
       .fillInForm('invalid@invalidemail.com', 'landway32')
       .validErrorEmail('There was a problem')
-  
+      .submit()
 
     browser.end();
   },
