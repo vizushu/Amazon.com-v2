@@ -134,10 +134,13 @@ var loginCommands = {
 	usersignOut: function () {
 		return this
 			.waitForElementVisible('body', 2000)
-			// .waitForElementVisible('@accList', 2000)
+			.waitForElementVisible('@accList', 2000)
 			// .verify.elementPresent('@accList')
 			.assert.visible('@accList')
 			.verify.containsText('@accList', data.account)
+			// .verify.containsText('@accList', data.account)
+			.moveToElement('@accList', 10, 30)
+			.click('@accList')
 			.click('@singOutBut')
 	}
 

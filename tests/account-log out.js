@@ -10,7 +10,6 @@ module.exports = {
             .loginPage()
             .fillInForm(data.username, data.password)
             .submit()
-            .usersignOut()
             .validatePage()
             .accountPage()
             .usersignOut()
