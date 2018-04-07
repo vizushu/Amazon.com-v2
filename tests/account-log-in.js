@@ -55,9 +55,9 @@
 //       .pause(5000)
 //     login
 //       .loginPage()
-//       .fillInForm('pcholo_anilao@yahoo.com', 'dasd')
+//       .fillInForm('data.username', 'dasd')
 //       .submit('@contButton')
-//       .fillInForm('pcholo_anilao@yahoo.com', 'dasd')
+//       .fillInForm('data.username', 'dasd')
 //       .passPage()
 //       .validErrorPass('There was a problem')
 //       .click('@signInBut')

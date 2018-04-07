@@ -20,7 +20,8 @@ var loginCommands = {
 	},
 	loginPage: function () {
 		return this
-			.waitForElementPresent('@inputEmail', 2000)
+			.waitForElementVisible('body', 1000)
+			// .waitForElementPresent('@inputEmail', 2000)
 			.waitForElementVisible('@inputEmail', 2000)
 			.verify.visible('@inputEmail')
 	},
@@ -48,18 +49,18 @@ var loginCommands = {
 		// 	.pause(2000)
 		// 	this
 	},
-	validErrorEmail: function ( ) {
+	validErrorEmail: function () {
 		return this
 			.verify.valueContains('@inputEmail', '')
 			.click('@contButton')
-			.verify.containsText('@error',  )
+			.verify.containsText('@error', )
 			.verify.visible('@error')
 	},
-	validErrorPass: function ( ) {
+	validErrorPass: function () {
 		return this
 			.verify.valueContains('@inputPass', '')
 			.click('@signInBut')
-			.verify.containsText('@error',  )
+			.verify.containsText('@error', )
 			.verify.visible('@error')
 	},
 	createAccountPage: function () {
@@ -89,7 +90,7 @@ var loginCommands = {
 			.assert.visible('@urRePass')
 			.verify.containsText('@urRePass', 'Re-enter password')
 	},
-	createAccount: function (yourname, email, password, repassword ) {
+	createAccount: function (yourname, email, password, repassword) {
 		return this
 			.waitForElementVisible('body', 2000)
 			.setValue('@newNameInput', yourname)
@@ -109,7 +110,7 @@ var loginCommands = {
 			.waitForElementVisible('@cr8invalidPass', 1000)
 			.verify.visible('@cr8invalidPass')
 			.verify.containsText('@cr8invalidPass', 'Passwords must be at least 6 characters.')
-			
+
 	},
 	createAccountError2: function () {
 		return this
@@ -118,7 +119,7 @@ var loginCommands = {
 			.waitForElementVisible('@cr8invalidEmail', 1000)
 			.verify.visible('@cr8invalidEmail')
 			.verify.containsText('@cr8invalidEmail', 'Enter a valid email address')
-			
+
 	},
 	createAccountError3: function () {
 		return this
@@ -127,8 +128,18 @@ var loginCommands = {
 			.waitForElementVisible('@cr8invalidPass', 1000)
 			.verify.visible('@cr8invalidPass')
 			.verify.containsText('@cr8invalidPass', 'Passwords must be at least 6 characters.')
-			
+
 	},
+
+	usersignOut: function () {
+		return this
+			.waitForElementVisible('body', 2000)
+			// .waitForElementVisible('@accList', 2000)
+			// .verify.elementPresent('@accList')
+			.assert.visible('@accList')
+			.verify.containsText('@accList', data.account)
+			.click('@singOutBut')
+	}
 
 };
 
@@ -169,9 +180,9 @@ module.exports = {
 		newPassInput: '#ap_password',
 		rePassInput: '#ap_password_check',
 		contButton: '#continue', //BUTTON
-		
+
 		cr8Error: 'div[class="a-alert-content"]',
-		cr8invalidEmail: '#auth-email-invalid-email-alert', 
+		cr8invalidEmail: '#auth-email-invalid-email-alert',
 		cr8emailMiss: '#auth-email-missing-alert',
 		cr8nameMiss: '#auth-customerName-missing-alert',
 		cr8passMiss: '#auth-password-missing-alert',

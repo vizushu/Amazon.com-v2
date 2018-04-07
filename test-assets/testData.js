@@ -7,8 +7,8 @@ module.exports = {
     lowprice: 'Low-price home décor with free shipping',
     account: 'Account & Lists',
 
-    username: 'pcholo_anilao@yahoo.com',
-    password: 'landway32',
+    username: 'me@renierdelacruz.com',
+    password: 'valid=pass',
     error: 'There was a problem'
 
     
