@@ -8,8 +8,8 @@ module.exports = {
             .validatePage()
             .accountPage()
             .createAccountPage()
-            .createAccount('aj','ajdevmountain.com','les8','les8')
-            .createAccountError()
+            .createAccount('renierdelacruz','mereniderdelacruz.com','!=pw','!=pw')
+            .createAccountError1()
 
         browser.end();
     },
@@ -18,26 +18,37 @@ module.exports = {
         var create = browser.page.commandsLogin();
 
         create.navigate()
-            .validatePage()
+        .validatePage()
+        .accountPage()
+        .createAccountPage()
+        .createAccount('renierdelacruz','merenierdelacruz.com','validpassword','validpassword')
+        .createAccountError2()
 
-        browser.end()
+    browser.end();
     },
 
     'Create account with valid email and invalid password': function (browser) {
         var create = browser.page.commandsLogin();
 
         create.navigate()
-            .validatePage()
+        .validatePage()
+        .accountPage()
+        .createAccountPage()
+        .createAccount('renierdelacruz','me@renierdelacruz.com','!=pw','!=pw')
+        .createAccountError3()
 
-        browser.end()
+    browser.end();
     },
 
     'Create account with valid email and valid password': function (browser) {
         var create = browser.page.commandsLogin();
 
         create.navigate()
-            .validatePage()
+        .validatePage()
+        .accountPage()
+        .createAccountPage()
+        .createAccount('renierdelacruz','me@renierdelacruz.com','valid=pass','valid=pass')
 
-        browser.end()
+    browser.end();
     }
 }

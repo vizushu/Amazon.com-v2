@@ -37,16 +37,16 @@ var loginCommands = {
 	},
 	accountPage: function () {
 		return this
-
+			.waitForElementPresent('body', 2000)
 			.waitForElementPresent('@accList', 1000)
 			.verify.elementPresent('@accList')
 			.assert.visible('@accList')
 			.verify.containsText('@accList', data.account)
 			.moveToElement('@accList', 10, 30)
 			.click('@accList')
-		browser
-			.pause(2000)
-			this
+		// browser
+		// 	.pause(2000)
+		// 	this
 	},
 	validErrorEmail: function ( ) {
 		return this
@@ -64,11 +64,11 @@ var loginCommands = {
 	},
 	createAccountPage: function () {
 		return this
-			.click('@accList')
 			.waitForElementVisible('body', 2000)
 			// .assert.visible('@amaIcon')
 			// .assert.title('Amazon Sign In')
-			.verify.elementPresent('@cr8Acc')
+			.waitForElementVisible('@cr8Acc', 5000)
+			.verify.visible('@cr8Acc')
 			.verify.containsText('@cr8Acc', 'Create your Amazon account')
 			.click('@cr8Acc')
 
@@ -99,14 +99,34 @@ var loginCommands = {
 			.click('@contButton')
 
 	},
-	createAccountError: function (error) {
+	createAccountError1: function () {
 		return this
 			.waitForElementVisible('body', 2000)
-			.verify.valueContains('@newNameInput', '')
 			.click('@contButton')
-			.verify.containsText('@cr8Error', 'Enter a valid email address')
-			.verify.visible('@cr8Error', 'Passwords must be at least 6 characters.')
+			.waitForElementVisible('@cr8invalidEmail', 1000)
+			.verify.visible('@cr8invalidEmail')
+			.verify.containsText('@cr8invalidEmail', 'Enter a valid email address')
+			.waitForElementVisible('@cr8invalidPass', 1000)
+			.verify.visible('@cr8invalidPass')
+			.verify.containsText('@cr8invalidPass', 'Passwords must be at least 6 characters.')
 			
+	},
+	createAccountError2: function () {
+		return this
+			.waitForElementVisible('body', 2000)
+			.click('@contButton')
+			.waitForElementVisible('@cr8invalidEmail', 1000)
+			.verify.visible('@cr8invalidEmail')
+			.verify.containsText('@cr8invalidEmail', 'Enter a valid email address')
+			
+	},
+	createAccountError3: function () {
+		return this
+			.waitForElementVisible('body', 2000)
+			.click('@contButton')
+			.waitForElementVisible('@cr8invalidPass', 1000)
+			.verify.visible('@cr8invalidPass')
+			.verify.containsText('@cr8invalidPass', 'Passwords must be at least 6 characters.')
 			
 	},
 
@@ -151,10 +171,11 @@ module.exports = {
 		contButton: '#continue', //BUTTON
 		
 		cr8Error: 'div[class="a-alert-content"]',
-		cr8invalidEmail: '#auth-email-invalid-email-alert',
+		cr8invalidEmail: '#auth-email-invalid-email-alert', 
 		cr8emailMiss: '#auth-email-missing-alert',
 		cr8nameMiss: '#auth-customerName-missing-alert',
 		cr8passMiss: '#auth-password-missing-alert',
+		cr8invalidPass: '#auth-password-invalid-password-alert',
 
 		urName: 'label[for="ap_customer_name',
 		urEmail: 'label[for="ap_email',
