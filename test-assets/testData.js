@@ -4,8 +4,10 @@ module.exports = {
     url: 'https://www.amazon.com/',
     amazon: 'Amazon Try Prime',
     deals: 'Deals recommended for you',
+    under10: {
     lowprice: 'Low-price home décor with free shipping',
     fungift: 'Fun gift ideas for $10 and under',
+    },
     accessories: 'Accessories for $10 or less with free shipping',
     account: 'Account & Lists',
 
@@ -13,7 +15,11 @@ module.exports = {
     password: 'valid=pass',
     error: 'There was a problem',
     signin: 'Amazon Sign In',
-    expensive: 'most expensive item on amazon'
+    expensive: 'most expensive item on amazon',
     
+    lowpricebanner: {
+        lowpricehome: "Low-price home décor with free shipping", 
+        lowpricefashion: "Low-price fashion with free shipping"
+    }
 
 }

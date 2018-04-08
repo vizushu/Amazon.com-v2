@@ -166,11 +166,11 @@ var loginCommands = {
 			.waitForElementPresent('@deals', 1000)
 			.verify.elementPresent('@deals')
 			.assert.elementPresent('@deals')
-			.verify.containsText('@deals', data.deals)
+			.verify.containsText('@deals', data.under10)
 			.waitForElementPresent('@accessories', 1000)
 			.verify.elementPresent('@accessories')
 			.assert.elementPresent('@accessories')
-			.verify.containsText('@accessories', data.accessories)
+			.verify.containsText('@accessories', data.under10
 			.waitForElementPresent('@funGift', 1000)
 			.verify.elementPresent('@funGift')
 			.assert.elementPresent('@funGift')
@@ -178,7 +178,7 @@ var loginCommands = {
 			.waitForElementPresent('@lowPrice', 1000)
 			.verify.elementPresent('@lowPrice')
 			.assert.elementPresent('@lowPrice')
-			.verify.containsText('@lowPrice', data.lowprice)
+			.verify.containsText('@lowPrice', data.lowpricebanner.lowpricefashion, data.lowpricebanner.lowpricehome)
 
 
 			.waitForElementPresent('@accList', 1000)
@@ -212,9 +212,45 @@ var loginCommands = {
 				console.log('Current Price!!!:', result.value);
 
 			});
+	},
+	userSettings: function (text) {
+		return this
+			.waitForElementPresent('body', 2000)
+			.waitForElementVisible('body', 2000)
+			.verify.elementNotPresent('@error')
+			.waitForElementPresent('@idHUD', 2000)
+			.verify.elementPresent('@idHUD')
+			.waitForElementVisible('@id', 2000)
+			.verify.elementPresent('@id')
+			.waitForElementVisible('@yourAddress', 2000)
+			.verify.elementPresent('@yourAddress')
+			.verify.containsText('@yourAddress', 'Your Addresses')
+			.waitForElementVisible('@yourSecurity', 2000)
+			.verify.elementPresent('@yourSecurity')
+			.verify.containsText('@yourSecurity', 'Login & security')
+			.waitForElementVisible('@yourOrders', 2000)
+			.verify.elementPresent('@yourOrders')
+			.verify.containsText('@yourOrders', 'Your Orders')
+			.waitForElementVisible('@yourPayment', 2000)
+			.verify.elementPresent('@yourPayment')
+			.verify.containsText('@yourPayment', 'Payment options')
 
+			.getText('@id', function (result) {
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+				console.log('WELCOME!!!:', result.value);
+			})
 
 	}
+
 
 };
 
@@ -270,6 +306,26 @@ module.exports = {
 		urPass: 'label[for="ap_password',
 		urRePass: 'label[for="ap_password_check',
 
+		//Your Account
+		id: '#hud-customer-name',
+		idHUD: '#hud-dashboard',
+		yourAccount: '#nav-al-your-account > a:nth-child(2)',
+		yourAddress: {
+			selector: '//*[@id="a-page"]/div[3]/div/div[2]/div[1]/a/div/div',
+			locateStrategy: 'xpath'
+		},
+		yourSecurity: {
+			selector: '//*[@id="a-page"]/div[3]/div/div[1]/div[2]/a/div/div',
+			locateStrategy: 'xpath'
+		},
+		yourOrders: {
+			selector: '//*[@id="a-page"]/div[3]/div/div[1]/div[1]/a/div/div',
+			locateStrategy: 'xpath'
+		},
+		yourPayment: {
+			selector: '//*[@id="a-page"]/div[3]/div/div[2]/div[2]/a/div/div',
+			locateStrategy: 'xpath'
+		},
 
 		//Sign In/Out
 		inputEmail: '#ap_email',
@@ -278,7 +334,6 @@ module.exports = {
 		signinText: '#a-autoid-0-announce',
 		singOutBut: '#nav-item-signout-sa', //BUTTON
 		cr8Acc: '#createAccountSubmit',
-
 		srchInput: '#twotabsearchtextbox',
 		submit: 'input[type="submit"]',
 
@@ -303,6 +358,11 @@ module.exports = {
 		qty: '#quantity',
 		addListBut: '#add-to-wishlist-button-submit',
 		popaddList: '#WLHUC_result',
+
+		// lowpricebanner = {
+		// 	lowpricehome: "Low-price home décor with free shipping", 
+		// 	lowpricefashion: "Low-price fashion with free shipping"
+		// }
 
 	}
 };
