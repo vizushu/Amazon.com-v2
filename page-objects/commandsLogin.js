@@ -185,6 +185,36 @@ var loginCommands = {
 			.verify.containsText('@accList', data.account)
 
 	},
+	searchAmazon: function (searchItem) {
+		return this
+			.waitForElementVisible('body', 1000)
+			.setValue('@srchInput', searchItem)
+			.click('@submit')
+			// .verify.containsText('@srchInput', searchItem)
+			.waitForElementPresent('@result', 1000)
+			.click('@result')
+			.waitForElementVisible('body', 5000)
+			.waitForElementVisible('@itemTitle', 5000)
+			.getText('@itemTitle', function (result) {
+				console.log('Searched Item:', result.value);
+			})
+			.getText('@price', function (result) {
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+				console.log('Current Price!!!:', result.value);
+
+			});
+
+
+	}
 
 };
 
@@ -252,8 +282,9 @@ module.exports = {
 		srchInput: '#twotabsearchtextbox',
 		submit: 'input[type="submit"]',
 
-		//other content
-		result: '#result_0',
+		//search result
+		price: '#priceblock_ourprice',
+		result: 'a[class="a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal"]',
 		resultImg: '#imgTagWrapperId',
 		itemTitle: '#productTitle',
 		addCartBut: '#add-to-cart-button',

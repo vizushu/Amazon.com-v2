@@ -12,7 +12,8 @@ module.exports = {
     username: 'me@renierdelacruz.com',
     password: 'valid=pass',
     error: 'There was a problem',
-    signin: 'Amazon Sign In'
+    signin: 'Amazon Sign In',
+    expensive: 'most expensive item on amazon'
     
 
 }
