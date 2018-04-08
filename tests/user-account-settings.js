@@ -43,7 +43,6 @@ module.exports = {
             .accountPage()
             .click('@yourAccount')
             .initialPage('Your Account')
-
             .userSettings()
 
     browser.end()

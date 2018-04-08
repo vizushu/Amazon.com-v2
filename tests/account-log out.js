@@ -10,7 +10,7 @@
 //         logout
 //             .accountPage()
 //         browser
-//             .pause(5000)
+//             .pause(2000)
 //         logout
 //             .loginPage()
 //             .fillInForm(data.username, data.password)

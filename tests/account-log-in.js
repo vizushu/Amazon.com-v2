@@ -31,7 +31,7 @@
     //     login
     //       .accountPage()
     //     browser
-    //       .pause(5000)
+    //       .pause(2000)
     //     login
     //       .loginPage()
     //       .fillInForm('asd', 'dasd')
@@ -52,7 +52,7 @@
     //     login
     //       .accountPage()
     //     browser
-    //       .pause(5000)
+    //       .pause(2000)
     //     login
     //       .loginPage()
     //       .fillInForm('data.username', 'dasd')
@@ -75,7 +75,7 @@
 //         login
 //             .accountPage()
 //         browser
-//             .pause(5000)
+//             .pause(2000)
 //         login
 //             .loginPage()
 //             .fillInForm(data.username, data.password)
