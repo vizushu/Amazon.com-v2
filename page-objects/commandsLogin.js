@@ -1,6 +1,17 @@
 const data = require('../test-assets/testData')
 
 var loginCommands = {
+	initialPage: function (titlepage) {
+		return this
+			.waitForElementPresent('body', 2000)
+			.waitForElementVisible('body', 1000)
+			.assert.title(titlepage)
+			.assert.urlContains(data.url)
+			.assert.visible('body')
+			.verify.elementNotPresent('@error')
+
+	},
+
 	validatePage: function () {
 		return this
 			.waitForElementVisible('body', 1000)
@@ -22,7 +33,7 @@ var loginCommands = {
 		return this
 			.waitForElementVisible('body', 1000)
 			// .waitForElementPresent('@inputEmail', 2000)
-			.waitForElementVisible('@inputEmail', 2000)
+			// .waitForElementVisible('@inputEmail', 2000)
 			.verify.visible('@inputEmail')
 	},
 	passPage: function () {
@@ -35,11 +46,12 @@ var loginCommands = {
 		return this
 			.verify.visible('@contButton', )
 			.click('@contButton')
+			.click('@signInBut')
 	},
 	accountPage: function () {
 		return this
 			.waitForElementPresent('body', 2000)
-			.waitForElementPresent('@accList', 1000)
+			.waitForElementVisible('@accList', 2000)
 			.verify.elementPresent('@accList')
 			.assert.visible('@accList')
 			.verify.containsText('@accList', data.account)
@@ -65,10 +77,10 @@ var loginCommands = {
 	},
 	createAccountPage: function () {
 		return this
-			.waitForElementVisible('body', 2000)
+			.waitForElementPresent('body', 2000)
 			// .assert.visible('@amaIcon')
 			// .assert.title('Amazon Sign In')
-			.waitForElementVisible('@cr8Acc', 5000)
+			.waitForElementPresent('@cr8Acc', 2000)
 			.verify.visible('@cr8Acc')
 			.verify.containsText('@cr8Acc', 'Create your Amazon account')
 			.click('@cr8Acc')

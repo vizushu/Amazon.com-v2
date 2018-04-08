@@ -9,8 +9,8 @@ module.exports = {
 
     username: 'me@renierdelacruz.com',
     password: 'valid=pass',
-    error: 'There was a problem'
-
+    error: 'There was a problem',
+    signin: 'Amazon Sign In'
     
 
 }
