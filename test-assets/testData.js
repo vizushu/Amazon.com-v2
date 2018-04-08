@@ -5,6 +5,8 @@ module.exports = {
     amazon: 'Amazon Try Prime',
     deals: 'Deals recommended for you',
     lowprice: 'Low-price home décor with free shipping',
+    fungift: 'Fun gift ideas for $10 and under',
+    accessories: 'Accessories for $10 or less with free shipping',
     account: 'Account & Lists',
 
     username: 'me@renierdelacruz.com',

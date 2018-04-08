@@ -154,7 +154,37 @@ var loginCommands = {
 			.moveToElement('@accList', 10, 30)
 			.click('@accList')
 			.click('@singOutBut')
-	}
+	},
+	mainContent: function () {
+		return this
+			.waitForElementPresent('@streamNav', 2000)
+			.verify.elementPresent('@streamNav')
+			.assert.visible('@streamNav')
+			.waitForElementPresent('@banner', 1000)
+			.verify.elementPresent('@banner')
+			.assert.elementPresent('@banner')
+			.waitForElementPresent('@deals', 1000)
+			.verify.elementPresent('@deals')
+			.assert.elementPresent('@deals')
+			.verify.containsText('@deals', data.deals)
+			.waitForElementPresent('@accessories', 1000)
+			.verify.elementPresent('@accessories')
+			.assert.elementPresent('@accessories')
+			.verify.containsText('@accessories', data.accessories)
+			.waitForElementPresent('@funGift', 1000)
+			.verify.elementPresent('@funGift')
+			.assert.elementPresent('@funGift')
+			.verify.containsText('@funGift', data.fungift)
+			.waitForElementPresent('@lowPrice', 1000)
+			.verify.elementPresent('@lowPrice')
+			.assert.elementPresent('@lowPrice')
+			.verify.containsText('@lowPrice', data.lowprice)
+
+
+			.waitForElementPresent('@accList', 1000)
+			.verify.containsText('@accList', data.account)
+
+	},
 
 };
 
@@ -172,7 +202,9 @@ module.exports = {
 		amaIcon: 'a[class="a-link-nav-icon',
 		banner: '#desktop-banner',
 		deals: '#desktop-1',
-		lowPrice: '#desktop-3',
+		accessories: '#desktop-2',
+		funGift: '#desktop-3',
+		lowPrice: '#desktop-4',
 		related: '#uber-widget-ns_KF7N85GWJ7FY7WEAAX6N_3553_',
 		recommend: 'div[class="a-section a-spacing-base a-spacing-top-medium a-padding-none a-text-center rhf-fresh-header',
 		dealToday: '#navSwmHoliday',
