@@ -249,7 +249,7 @@ var loginCommands = {
 				console.log('WELCOME!!!:', result.value);
 			}) 
 	},
-	orderProduct: function () {
+	orderProductElements: function () {
 		return this
 		.waitForElementPresent('body', 2000)
 		.waitForElementVisible('body', 2000)
@@ -258,16 +258,28 @@ var loginCommands = {
 		.verify.elementPresent('@addCartBut')
 		.waitForElementVisible('@dropdown', 2000)
 		.verify.elementPresent('@dropdown')
-		.verify.containsText('@dropdown', 'Your Addresses')
-		.waitForElementVisible('@yourSecurity', 2000)
-		.verify.elementPresent('@yourSecurity')
-		.verify.containsText('@yourSecurity', 'Login & security')
-		.waitForElementVisible('@yourOrders', 2000)
-		.verify.elementPresent('@yourOrders')
-		.verify.containsText('@yourOrders', 'Your Orders')
+		.verify.containsText('@dropdown', 'Select')
+		.waitForElementVisible('@size', 2000)
+		.verify.elementPresent('@size')
+		.waitForElementVisible('@addListBut', 2000)
+		.verify.elementPresent('@addListBut')
+		.verify.containsText('@addListBut', 'Add to List')
 		.waitForElementVisible('@yourPayment', 2000)
 		.verify.elementPresent('@yourPayment')
 		.verify.containsText('@yourPayment', 'Payment options')
+	},
+	orderToCart: function () {
+		return this	
+		.click('@dropdown')
+		.waitForElementVisible('@size', 2000)
+		.setValue('@size', 4)
+		.setValue('@dropdown', 4)
+		.waitForElementPresent('@qty', 2000)
+		.waitForElementVisible('@qty', 2000)
+		.setValue('@qty', 1)
+		.waitForElementPresent('@addCartBut', 2000)
+		.verify.containsText('@addCartBut', 'Add to Cart')
+		.click('@addCartBut')
 
 	}
 
@@ -363,9 +375,6 @@ module.exports = {
 		resultImg: '#imgTagWrapperId',
 		itemTitle: '#productTitle',
 		
-		addedCart: '#huc-v2-order-row-confirm-text',
-		proceedCartBut: '#hlb-ptc-btn-native',
-		cartBut: '#hlb-view-cart-announce',
 		useAddress: '#orderSummaryPrimaryActionBtn-announce',
 		placeOrder: '#submitOrderButtonId-announce',
 		orderPlaced: 'div[class="a-column a-span7', //Thank you, your order has been placed.
@@ -386,10 +395,13 @@ module.exports = {
 		qty: '#quantity',
 		addListBut: '#add-to-wishlist-button-submit',
 		popaddList: '#WLHUC_result',
-		primeAds: 'div[class="a-popover-wrapper"]',
-		primeQualify: '#a-popover-content-7',
-		primeNoBut: '#sbbop-no-button',
-		primeYesBut: '#sbbop-yes-button',
+		// primeAds: 'div[class="a-popover-wrapper"]',
+		// primeQualify: '#a-popover-content-7',
+		// primeNoBut: '#sbbop-no-button',
+		// primeYesBut: '#sbbop-yes-button',
+		proceedCartBut: '#hlb-ptc-btn-native', //proceed to cart button
+		cartBut: '#hlb-view-cart-announce',
+		addedCart: '#huc-v2-order-row-confirm-text', //added to cart confirmation
 
 		//Address Input field
 		fullname: '#enterAddressFullName',
@@ -414,15 +426,23 @@ module.exports = {
 		phoneLabel: 'label[for="enterAddressPhoneNumber"]',
 		gatecode: '#GateCode',
 		gatecodeLabel: 'label[for="GateCode"]',
-		submit: 'input[type="submit"]', //BUTTON
-		shipping: '#sosp-touch-indicator', //PAGE
+		submit: 'input[type="submit"]', //Continue, Submit button
+		shipping: '#sosp-touch-indicator', //Choose shipping page
 		primeBox: '#availableForPrimeBox',
 		primeShip: '#order_0_ShippingSpeed_PrimeSMSP-sss-us',
 		stdFreeShip: '#order_0_ShippingSpeed_sss-us',
 		stdShip: '#order_0_ShippingSpeed_std-n-us',
 		sameShip: '#order_0_ShippingSpeed_same-us',
+		newCC: '#new-cc',
+		ccName: '#ccName',
+		ccNameLabel: 'label[for="ccName"]',
+		ccNumber: '#addCreditCardNumber',
+		ccNumberLabel: 'label[for="addCreditCardNumber"]',
+		ccMonth: '#ccMonth',
+		ccYear: '#ccYear',
+		ccAddCard: '#ccAddCard', //Add credit card button
+		primeHeader: 'center[class="header"]', // renierdelacruz, why pay for shipping? Save $8.94 with FREE Two-Day Shipping on this order
 
-
-
+		
 	}
 };

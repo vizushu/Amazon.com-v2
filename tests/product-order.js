@@ -37,8 +37,15 @@ module.exports = {
 
         product.navigate()
             .searchAmazon('cheapest thing on amazon free shipping')
-            
-    }
+
+    },
+    'Adding Product item to cart': function (browser) {
+        var cart = browser.page.commandsLogin();
+
+        cart.navigate()
+            .orderProductElements()
+            .orderToCart()
+    
     // 'Navigate to users account setting': function (browser) {
     //     var settings = browser.page.commandsLogin();
 
@@ -50,6 +57,6 @@ module.exports = {
     //         .initialPage('Your Account')
     //         .userSettings()
 
-    // browser.end()
-    // }
+    browser.end()
+    }
 };
