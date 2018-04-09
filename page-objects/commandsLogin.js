@@ -32,8 +32,8 @@ var loginCommands = {
 	loginPage: function () {
 		return this
 			.waitForElementVisible('body', 1000)
-			// .waitForElementPresent('@inputEmail', 2000)
-			// .waitForElementVisible('@inputEmail', 2000)
+			// .waitForElementPresent('@inputEmail', 10000)
+			.waitForElementVisible('@inputEmail', 5000)
 			.verify.visible('@inputEmail')
 	},
 	passPage: function () {
@@ -57,6 +57,7 @@ var loginCommands = {
 			.verify.containsText('@accList', data.account)
 			.moveToElement('@accList', 10, 30)
 			.click('@accList')
+			
 		// browser
 		// 	.pause(2000)
 		// 	this
@@ -166,19 +167,19 @@ var loginCommands = {
 			.waitForElementPresent('@deals', 1000)
 			.verify.elementPresent('@deals')
 			.assert.elementPresent('@deals')
-			.verify.containsText('@deals', data.under10.fungift, data.under10.accessories)
+			// .verify.containsText('@deals', data.under10.fungift, data.under10.accessories)
 			.waitForElementPresent('@accessories', 1000)
 			.verify.elementPresent('@accessories')
 			.assert.elementPresent('@accessories')
-			.verify.containsText('@accessories', data.under10.fungift, data.under10.accessories)
+			// .verify.containsText('@accessories', data.under10.fungift, data.under10.accessories)
 			.waitForElementPresent('@funGift', 1000)
 			.verify.elementPresent('@funGift')
 			.assert.elementPresent('@funGift')
-			.verify.containsText('@funGift', data.under10.fungift, data.under10.accessories)
+			// .verify.containsText('@funGift', data.under10.fungift, data.under10.accessories)
 			.waitForElementPresent('@lowPrice', 1000)
 			.verify.elementPresent('@lowPrice')
 			.assert.elementPresent('@lowPrice')
-			.verify.containsText('@lowPrice', data.lowpricebanner.lowpricefashion, data.lowpricebanner.lowpricehome)
+			// .verify.containsText('@lowPrice', data.lowpricebanner.lowpricefashion, data.lowpricebanner.lowpricehome)
 
 
 			.waitForElementPresent('@accList', 1000)
@@ -251,35 +252,132 @@ var loginCommands = {
 	},
 	orderProductElements: function () {
 		return this
-		.waitForElementPresent('body', 2000)
-		.waitForElementVisible('body', 2000)
+		.waitForElementPresent('@itemTitle', 2000)
+		.waitForElementVisible('@itemTitle', 2000)
 		.verify.elementNotPresent('@error')
-		.waitForElementVisible('@addCartBut', 2000)
+		.waitForElementVisible('@addCartBut', 5000)
 		.verify.elementPresent('@addCartBut')
 		.waitForElementVisible('@dropdown', 2000)
 		.verify.elementPresent('@dropdown')
 		.verify.containsText('@dropdown', 'Select')
-		.waitForElementVisible('@size', 2000)
-		.verify.elementPresent('@size')
 		.waitForElementVisible('@addListBut', 2000)
 		.verify.elementPresent('@addListBut')
-		.verify.containsText('@addListBut', 'Add to List')
-		.waitForElementVisible('@yourPayment', 2000)
-		.verify.elementPresent('@yourPayment')
-		.verify.containsText('@yourPayment', 'Payment options')
+		
 	},
 	orderToCart: function () {
 		return this	
 		.click('@dropdown')
 		.waitForElementVisible('@size', 2000)
-		.setValue('@size', 4)
-		.setValue('@dropdown', 4)
-		.waitForElementPresent('@qty', 2000)
+		.click('#native_dropdown_selected_ring_size_1')
+		.waitForElementPresent('@qty', 5000)
 		.waitForElementVisible('@qty', 2000)
 		.setValue('@qty', 1)
 		.waitForElementPresent('@addCartBut', 2000)
-		.verify.containsText('@addCartBut', 'Add to Cart')
 		.click('@addCartBut')
+		.waitForElementVisible('@addedCart', 2000)
+		.verify.elementPresent('@addedCart')
+		.verify.containsText('@addedCart', 'Added to Cart')
+
+
+	},
+	verifyCart: function () {
+		return this
+		.click('@cart')
+		
+	},
+	proceedCheckOut: function () {
+		return this
+		.waitForElementVisible('@proceedCartBut', 2000)
+		.click('@proceedCartBut')
+		.waitForElementVisible('@fullname', 5000)
+		.verify.elementPresent('@fullname')
+		.verify.containsText('@fullnameLabel', 'Full name:')
+		.waitForElementVisible('@address', 2000)
+		.verify.elementPresent('@address')
+		.verify.containsText('@addressLabel', 'Address line 1:')
+		.waitForElementVisible('@address2', 2000)
+		.verify.elementPresent('@address2')
+		.verify.containsText('@address2Label', 'Address line 2:')
+		.waitForElementVisible('@city', 2000)
+		.verify.elementPresent('@city')
+		.verify.containsText('@cityLabel', 'City:')
+		.waitForElementVisible('@state', 2000)
+		.verify.elementPresent('@state')
+		.verify.containsText('@stateLabel', 'State/Province/Region:')
+		.waitForElementVisible('@zipcode', 2000)
+		.verify.elementPresent('@zipcode')
+		.verify.containsText('@zipcodeLabel', 'ZIP:')
+		.waitForElementVisible('@country', 2000)
+		.verify.elementPresent('@country')
+		.verify.containsText('@countryLabel', 'Country:')
+		.waitForElementVisible('@phone', 2000)
+		.verify.elementPresent('@phone')
+		.verify.containsText('@phoneLabel', 'Phone number:')
+		.waitForElementVisible('@gatecode', 2000)
+		.verify.elementPresent('@gatecode')
+		.verify.containsText('@gatecodeLabel', 'Security access code:')
+
+		.setValue('@fullname', data.fullname)
+		.setValue('@address', data.address)
+		.setValue('@address2', data.address2)
+		.setValue('@city', data.city)
+		.setValue('@state', data.state)
+		.setValue('@zipcode', data.zipcode)
+		// .setValue('@country', data.country)
+		.setValue('@phone', data.phone)
+
+		// .verify.containsText('@submit', 'Deliver to this address')
+		.click('@submit')
+		.waitForElementVisible('@shipping', 5000)
+		.waitForElementVisible('@submit', 5000)
+		// .verify.containsText('@submit', 'Continue')
+		.click('@submit')
+
+	},
+	addCreditCard: function () {
+		return this
+		
+		.waitForElementPresent('#existing-payment-methods', 5000)
+		.click('#wrapper-new-cc > div:nth-child(2) > a')
+		.waitForElementVisible('@newCC', 5000)
+		.verify.elementPresent('@newCC')
+		// .verify.containsText('@newCC', 
+		// 'Enter your card information: Name on card Card number Expiration date 01 2018')
+		.waitForElementVisible('@ccName', 2000)
+		.verify.elementPresent('@ccName')
+		.setValue('@ccName', data.fullname)
+		.setValue('@ccNumber', data.ccnumber)
+
+		.waitForElementVisible('@ccMonth', 2000)
+		.verify.elementPresent('@ccMonth')
+		.click('@ccMonth')
+		.waitForElementVisible('@ccMonth7', 2000) //cant get pass this
+		.verify.elementPresent('@ccMonth7')
+		// .click('ccMonth7')
+		// .setValue('ccMonth7', 07)
+		// .click('a#pp-S6-27_6')
+		.setValue('a#pp-S6-27_6', 07)
+
+		.waitForElementVisible('@ccYear', 2000)
+		.verify.elementPresent('@ccYear')
+		.click('@ccYear')
+		.waitForElementVisible('@ccYear2020', 2000)
+		.verify.elementPresent('@ccYear2020')
+		// .click('ccYear2020')
+		// .setValue('@ccYear2020', 2020)
+		// .click('a#pp-S6-28_2')
+		.setValue('a#pp-S6-28_2', 2020)
+
+		.waitForElementVisible('@ccAddCard', 2000)
+		.verify.elementPresent('@ccAddCard')
+		.click('@ccAddCard')
+
+		.waitForElementVisible('body', 2000)
+		.waitForElementVisible('@submit', 2000)
+		.click('@submit')
+
+		.verify.elementNotPresent('@error')
+
 
 	}
 
@@ -428,6 +526,7 @@ module.exports = {
 		gatecodeLabel: 'label[for="GateCode"]',
 		submit: 'input[type="submit"]', //Continue, Submit button
 		shipping: '#sosp-touch-indicator', //Choose shipping page
+		
 		primeBox: '#availableForPrimeBox',
 		primeShip: '#order_0_ShippingSpeed_PrimeSMSP-sss-us',
 		stdFreeShip: '#order_0_ShippingSpeed_sss-us',
@@ -438,8 +537,30 @@ module.exports = {
 		ccNameLabel: 'label[for="ccName"]',
 		ccNumber: '#addCreditCardNumber',
 		ccNumberLabel: 'label[for="addCreditCardNumber"]',
-		ccMonth: '#ccMonth',
-		ccYear: '#ccYear',
+		ccMonth: {
+			selector: '(//button[@class="a-button-text a-declarative"])[1]',
+			locateStrategy: 'xpath'
+		// },
+		// ccMonthDrp: {
+		// 	selector: '(//div[@class="a-popover-wrapper"])[1]',
+		// 	locateStrategy: 'xpath'
+		},
+		ccMonth7: {
+			selector: '(//li[@tabindex="0"])[7]',
+			locateStrategy: 'xpath'
+		},
+		ccYear2020: {
+			selector: '(//li[@tabindex="0"])[14]',
+			locateStrategy: 'xpath'
+		},
+		// ccYearDrp: {
+		// 	selector: '(//div[@class="a-popover-wrapper"])[2]',
+		// 	locateStrategy: 'xpath'
+		// },
+		ccYear: {
+			selector: '(//button[@class="a-button-text a-declarative"])[2]',
+			locateStrategy: 'xpath'
+		},
 		ccAddCard: '#ccAddCard', //Add credit card button
 		primeHeader: 'center[class="header"]', // renierdelacruz, why pay for shipping? Save $8.94 with FREE Two-Day Shipping on this order
 

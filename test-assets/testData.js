@@ -20,6 +20,18 @@ module.exports = {
     lowpricebanner: {
         lowpricehome: "Low-price home décor with free shipping",
         lowpricefashion: "Low-price fashion with free shipping"
-    }
+    },
+
+    fullname: 'Renier Jonh Dela Cruz',
+    address: '10435 Lindley Ave',
+    address2: 'Apt 112',
+    city: 'Northridge',
+    state: 'California',
+    zipcode: '91326',
+    country: 'United States',
+    phone: '8184863845',
+    gatecode: 'Call the phone number',
+    ccnumber: '4060955282475056',
+
 
 }

@@ -7,9 +7,9 @@ module.exports = {
         main.navigate()
             .validatePage()
             .initialPage(data.titlepage)
-        browser.execute('scrollTo(0, 1000)')
-        browser.execute('scrollTo(0, 2000)')
-        browser.execute('scrollTo(0, 3000)')
+        // browser.execute('scrollTo(0, 1000)')
+        // browser.execute('scrollTo(0, 2000)')
+        // browser.execute('scrollTo(0, 3000)')
         main
             .mainContent()
 
@@ -32,20 +32,18 @@ module.exports = {
             .click('@signInBut')
             .initialPage(data.titlepage)
     },
-    'Search for product item': function (browser) {
+    'Adding product item to cart': function (browser) {
         var product = browser.page.commandsLogin();
 
         product.navigate()
             .searchAmazon('cheapest thing on amazon free shipping')
-
-    },
-    'Adding Product item to cart': function (browser) {
-        var cart = browser.page.commandsLogin();
-
-        cart.navigate()
+            .initialPage('Amazon.com: BOHG Jewelry Womens Fashion Silver-Plate Cubic Zirconia CZ Cute Princess Crown Tiara Ring Wedding Band: Jewelry')
             .orderProductElements()
             .orderToCart()
+            .proceedCheckOut()
+            .addCreditCard()
     
+    // },
     // 'Navigate to users account setting': function (browser) {
     //     var settings = browser.page.commandsLogin();
 
