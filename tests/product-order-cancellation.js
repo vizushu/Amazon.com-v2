@@ -10,8 +10,7 @@
 //         browser.execute('scrollTo(0, 1000)')
 //         browser.execute('scrollTo(0, 2000)')
 //         browser.execute('scrollTo(0, 3000)')
-//         main
-//             .mainContent()
+//         main.mainContent()
 
 //     },
 //     'Log in existing user account': function (browser) {
@@ -43,6 +42,8 @@
 //             .initialPage('Your Account')
 //             .userSettings()
 
-//     browser.end()
+//         browser.end()
 //     }
 // };
+
+// TO BE EDITED

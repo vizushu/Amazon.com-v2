@@ -247,10 +247,29 @@ var loginCommands = {
 				console.log('WELCOME!!!:', result.value);
 				console.log('WELCOME!!!:', result.value);
 				console.log('WELCOME!!!:', result.value);
-			})
+			}) 
+	},
+	orderProduct: function () {
+		return this
+		.waitForElementPresent('body', 2000)
+		.waitForElementVisible('body', 2000)
+		.verify.elementNotPresent('@error')
+		.waitForElementVisible('@addCartBut', 2000)
+		.verify.elementPresent('@addCartBut')
+		.waitForElementVisible('@dropdown', 2000)
+		.verify.elementPresent('@dropdown')
+		.verify.containsText('@dropdown', 'Your Addresses')
+		.waitForElementVisible('@yourSecurity', 2000)
+		.verify.elementPresent('@yourSecurity')
+		.verify.containsText('@yourSecurity', 'Login & security')
+		.waitForElementVisible('@yourOrders', 2000)
+		.verify.elementPresent('@yourOrders')
+		.verify.containsText('@yourOrders', 'Your Orders')
+		.waitForElementVisible('@yourPayment', 2000)
+		.verify.elementPresent('@yourPayment')
+		.verify.containsText('@yourPayment', 'Payment options')
 
 	}
-
 
 };
 
@@ -286,6 +305,7 @@ module.exports = {
 		orders: 'a[href="/gp/css/order-history/ref=nav_nav_orders_first',
 		tryPrime: 'a[href="/gp/prime/ref=nav_prime_try_btn',
 		cart: 'a[href="/gp/cart/view.html/ref=nav_cart',
+		
 
 		//Create account
 		newNameInput: 'input[type="text"]',
@@ -335,14 +355,14 @@ module.exports = {
 		singOutBut: '#nav-item-signout-sa', //BUTTON
 		cr8Acc: '#createAccountSubmit',
 		srchInput: '#twotabsearchtextbox',
-		submit: 'input[type="submit"]',
+		
 
 		//search result
 		price: '#priceblock_ourprice',
 		result: 'a[class="a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal"]',
 		resultImg: '#imgTagWrapperId',
 		itemTitle: '#productTitle',
-		addCartBut: '#add-to-cart-button',
+		
 		addedCart: '#huc-v2-order-row-confirm-text',
 		proceedCartBut: '#hlb-ptc-btn-native',
 		cartBut: '#hlb-view-cart-announce',
@@ -355,14 +375,54 @@ module.exports = {
 		orderCancelled: 'div[class="a-box-inner a-alert-container', //This order has been cancelled.
 		continueShop: 'a[href="/ref=od_aui_cancelled_keep_shop',
 
-		qty: '#quantity',
+		
 		addListBut: '#add-to-wishlist-button-submit',
 		popaddList: '#WLHUC_result',
 
-		// lowpricebanner = {
-		// 	lowpricehome: "Low-price home décor with free shipping", 
-		// 	lowpricefashion: "Low-price fashion with free shipping"
-		// }
+		//Placing an order
+		addCartBut: '#add-to-cart-button',
+		dropdown: '#dropdown_selected_ring_size',
+		size: '#ring_size_1',
+		qty: '#quantity',
+		addListBut: '#add-to-wishlist-button-submit',
+		popaddList: '#WLHUC_result',
+		primeAds: 'div[class="a-popover-wrapper"]',
+		primeQualify: '#a-popover-content-7',
+		primeNoBut: '#sbbop-no-button',
+		primeYesBut: '#sbbop-yes-button',
+
+		//Address Input field
+		fullname: '#enterAddressFullName',
+		fullnameLabel: 'label[for="enterAddressFullName"]',
+		address: '#enterAddressAddressLine1',
+		addressLabel: 'label[for="enterAddressAddressLine1"]',
+		address2: '#enterAddressAddressLine2',
+		address2Label: 'label[for="enterAddressAddressLine2"]',
+		city: '#enterAddressCity',
+		cityLabel: 'label[for="enterAddressCity"]',
+		state: '#enterAddressStateOrRegion',
+		stateLabel: 'label[for="enterAddressStateOrRegion"]',
+		zipcode: '#enterAddressPostalCode',
+		zipcodeLabel: 'label[for="enterAddressPostalCode"]',
+		country: '#enterAddressCountryCode',
+		countryLabel: 'label[for="enterAddressCountryCode"]',
+		dropUS: {
+			selector: '//*[@id="enterAddressCountryCode"]/option[233]',
+			locateStrategy: 'xpath'
+		},
+		phone: '#enterAddressPhoneNumber',
+		phoneLabel: 'label[for="enterAddressPhoneNumber"]',
+		gatecode: '#GateCode',
+		gatecodeLabel: 'label[for="GateCode"]',
+		submit: 'input[type="submit"]', //BUTTON
+		shipping: '#sosp-touch-indicator', //PAGE
+		primeBox: '#availableForPrimeBox',
+		primeShip: '#order_0_ShippingSpeed_PrimeSMSP-sss-us',
+		stdFreeShip: '#order_0_ShippingSpeed_sss-us',
+		stdShip: '#order_0_ShippingSpeed_std-n-us',
+		sameShip: '#order_0_ShippingSpeed_same-us',
+
+
 
 	}
 };

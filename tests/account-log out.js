@@ -5,12 +5,10 @@
 //         var logout = browser.page.commandsLogin();
 //         logout.navigate()
 //             .validatePage()
-//         browser
-//             .pause(2000)
+//         browser.pause(2000)
 //         logout
 //             .accountPage()
-//         browser
-//             .pause(2000)
+//         browser.pause(2000)
 //         logout
 //             .loginPage()
 //             .fillInForm(data.username, data.password)
