@@ -272,7 +272,7 @@ var loginCommands = {
 			.click('#native_dropdown_selected_ring_size_1')
 			.waitForElementPresent('@qty', 5000)
 			.waitForElementVisible('@qty', 2000)
-			.setValue('@qty', 01)
+			.setValue('@qty', 001)
 			.waitForElementPresent('@addCartBut', 2000)
 			.click('@addCartBut')
 			.waitForElementVisible('@addedCart', 2000)
@@ -335,7 +335,7 @@ var loginCommands = {
 			.click('@submit')
 
 	},
-	addCreditCard: function (browser) {
+	addCreditCard: function () {
 		return this
 
 			.waitForElementPresent('#existing-payment-methods', 5000)
@@ -376,8 +376,29 @@ var loginCommands = {
             .waitForElementVisible('body', 2000)
             .waitForElementVisible('@submit', 2000)
             .click('@submit')
-            .verify.elementNotPresent('@error')
-	}
+			.verify.elementNotPresent('@error')
+			.click('@deliverBut')
+			
+			.waitForElementVisible('body', 2000)
+			.verify.elementPresent('@primeBox')
+			.waitForElementVisible('@placeOrder', 2000)
+			.verify.elementPresent('@placeOrder')
+			.click('@placeOrder')
+			.waitForElementPresent('@success', 5000)
+			.verify.elementPresent('@success')
+	},
+	orderPlaced: function() {
+		return this
+
+			.waitForElementPresent('@orders', 2000)
+			.verify.elementPresent('@orders')
+			.click('@orders')
+	},
+	// cancelOrder: function () {
+	// 	return this
+
+	// 		.
+	// }
 
 };
 
@@ -410,7 +431,10 @@ module.exports = {
 			locateStrategy: 'xpath'
 		},
 		signIn: '#nav-flyout-ya-signin > a > span',
-		orders: 'a[href="/gp/css/order-history/ref=nav_nav_orders_first',
+		orders: {
+			selector: '(//span[@class="nav-line-2"])[4]',
+			locateStrategy: 'xpath'
+		},
 		tryPrime: 'a[href="/gp/prime/ref=nav_prime_try_btn',
 		cart: 'a[href="/gp/cart/view.html/ref=nav_cart',
 
@@ -472,13 +496,7 @@ module.exports = {
 		itemTitle: '#productTitle',
 
 		useAddress: '#orderSummaryPrimaryActionBtn-announce',
-		placeOrder: '#submitOrderButtonId-announce',
-		orderPlaced: 'div[class="a-column a-span7', //Thank you, your order has been placed.
-		cancelItem: '#Cancel-items_1',
-		cancelReason: 'select[name="cancel.reason',
-		cancelButton: 'input[type="image',
-		orderCancelled: 'div[class="a-box-inner a-alert-container', //This order has been cancelled.
-		continueShop: 'a[href="/ref=od_aui_cancelled_keep_shop',
+		
 
 
 		addListBut: '#add-to-wishlist-button-submit',
@@ -525,7 +543,7 @@ module.exports = {
 		submit: 'input[type="submit"]', //Continue, Submit button
 		shipping: '#sosp-touch-indicator', //Choose shipping page
 
-		primeBox: '#availableForPrimeBox',
+		primeBox: '#header-black',
 		primeShip: '#order_0_ShippingSpeed_PrimeSMSP-sss-us',
 		stdFreeShip: '#order_0_ShippingSpeed_sss-us',
 		stdShip: '#order_0_ShippingSpeed_std-n-us',
@@ -538,30 +556,42 @@ module.exports = {
 		ccMonth: {
 			selector: '(//button[@class="a-button-text a-declarative"])[1]',
 			locateStrategy: 'xpath'
-			// },
-			// ccMonthDrp: {
-			// 	selector: '(//div[@class="a-popover-wrapper"])[1]',
-			// 	locateStrategy: 'xpath'
 		},
 		ccMonth7: {
 			selector: '(//li[@tabindex="0"])[7]',
 			locateStrategy: 'xpath'
 		},
 		ccYear2020: {
-			selector: '(//li[@tabindex="0"])[14]',
+			selector: '(//li[@tabindex="0"])[3]',
 			locateStrategy: 'xpath'
 		},
-		// ccYearDrp: {
-		// 	selector: '(//div[@class="a-popover-wrapper"])[2]',
-		// 	locateStrategy: 'xpath'
-		// },
 		ccYear: {
 			selector: '(//button[@class="a-button-text a-declarative"])[2]',
 			locateStrategy: 'xpath'
 		},
 		ccAddCard: '#ccAddCard', //Add credit card button
 		primeHeader: 'center[class="header"]', // renierdelacruz, why pay for shipping? Save $8.94 with FREE Two-Day Shipping on this order
+		deliverBut: {
+			selector: '(//span[@class="a-button-inner"])[1]',
+			locateStrategy: 'xpath'
+		},
 
 
+		//order placed
+		confirmation: '#subHeadingAndMobileWidget',
+		placeOrder: 'span[class="a-button-inner a-button-span12 buy-button-height-1"]',
+		success: 'div[class="a-column a-span7', //Thank you, your order has been placed.
+		
+		//checkin your order
+
+		trackPackage: '#a-autoid-3-announce',
+
+		//cancelling order
+		cancelReason: 'option[value="mistake"]',
+		cancelItem: '#Cancel-items_1',
+		cancelReason:  'option[value="mistake"]', //'select[name="cancel.reason',
+		cancelButton: 'input[type="image',
+		orderCancelled: 'h4[class="a-alert-heading"]', //This order has been cancelled.
+		continueShop: 'a[href="/ref=od_aui_cancelled_keep_shop',
 	}
 };
