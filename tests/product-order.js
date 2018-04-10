@@ -7,8 +7,8 @@ module.exports = {
         main.navigate()
             .validatePage()
             .initialPage(data.titlepage)
-        // browser.execute('scrollTo(0, 1000)')
-        // browser.execute('scrollTo(0, 2000)')
+        browser.execute('scrollTo(0, 1000)')
+        browser.execute('scrollTo(0, 2000)')
         // browser.execute('scrollTo(0, 3000)')
         main
             .mainContent()
@@ -42,19 +42,18 @@ module.exports = {
             .orderToCart()
             .proceedCheckOut()
             .addCreditCard()
-    
-    // },
-    // 'Navigate to users account setting': function (browser) {
-    //     var settings = browser.page.commandsLogin();
 
-    //     settings.navigate()
-    //         .validatePage()
-    //         .initialPage(data.titlepage)
-    //         .accountPage()
-    //         .click('@yourAccount')
-    //         .initialPage('Your Account')
-    //         .userSettings()
+            // },
+            // 'Navigate to users account setting': function (browser) {
+            //     var settings = browser.page.commandsLogin();
 
-    browser.end()
+            //     settings.navigate()
+            //         .validatePage()
+            //         .initialPage(data.titlepage)
+            //         .accountPage()
+            //         .click('@yourAccount')
+            //         .initialPage('Your Account')
+            //         .userSettings()
+
     }
 };
