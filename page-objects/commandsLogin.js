@@ -362,8 +362,12 @@ var loginCommands = {
 			
 			.waitForElementVisible('@ccYear', 2000)
             .verify.elementPresent('@ccYear')
-            .click('@ccYear')
-            .waitForElementVisible('@ccYear2020', 2000)
+			.click('@ccYear')
+			
+			.waitForElementPresent('div[class="field-span spacing-top-large card-images"]', 2000)
+			.verify.elementPresent('div[class="field-span spacing-top-large card-images"]')
+
+            .waitForElementVisible('@ccYear2020', 5000)
 			.verify.elementPresent('@ccYear2020')
 			.click('@ccYear2020')
 
@@ -380,7 +384,7 @@ var loginCommands = {
 			.click('@deliverBut')
 			
 			.waitForElementVisible('body', 2000)
-			.verify.elementPresent('@primeBox')
+			// .verify.elementPresent('@primeBox')
 			.waitForElementVisible('@placeOrder', 2000)
 			.verify.elementPresent('@placeOrder')
 			.click('@placeOrder')
@@ -390,15 +394,57 @@ var loginCommands = {
 	orderPlaced: function() {
 		return this
 
-			.waitForElementPresent('@orders', 2000)
+			.waitForElementPresent('@orders', 5000)
 			.verify.elementPresent('@orders')
 			.click('@orders')
 	},
-	// cancelOrder: function () {
-	// 	return this
+	cancelOrder: function () {
+		return this
 
-	// 		.
-	// }
+			.waitForElementVisible('@accountOrders', 2000)
+			.verify.elementPresent('@accountOrders')
+			.waitForElementVisible('@controlContainer', 2000)
+			.verify.elementPresent('@controlContainer')
+			.waitForElementVisible('@itemOrderedContainer', 2000)
+			.verify.elementPresent('@itemOrderedContainer')
+			.waitForElementVisible('@itemOrdered', 2000)
+			.verify.elementPresent('@itemOrdered')
+			.getText('@itemOrdered', function (result) {
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+				console.log('THIS IS YOUR ORDERED ITEM:', result.value);
+			})
+			
+			.waitForElementVisible('@cancelItem', 2000)
+			.verify.elementPresent('@cancelItem')
+			.click('@cancelItem')	
+
+			.waitForElementVisible('@cancelReason', 2000)
+			.verify.elementPresent('@cancelReason')
+			.click('@cancelReason')
+
+			.waitForElementVisible('@cancelReasonList', 5000)
+			.verify.elementPresent('@cancelReasonList')
+			.click('@cancelReasonList')
+
+			.waitForElementVisible('@cancelButton', 5000)
+			.verify.elementPresent('@cancelButton')
+			.click('@cancelButton')
+
+			.waitForElementVisible('@orderCancelled', 2000)
+			.verify.elementNotPresent('@orderCancelled')
+			.waitForElementVisible('@continueShop', 2000)
+			.verify.elementNotPresent('@orderCancelled')
+			
+	}
 
 };
 
@@ -432,7 +478,7 @@ module.exports = {
 		},
 		signIn: '#nav-flyout-ya-signin > a > span',
 		orders: {
-			selector: '(//span[@class="nav-line-2"])[4]',
+			selector: '(//span[@class="nav-line-2"])[4]', //*[@id="nav-orders"]/span[2]
 			locateStrategy: 'xpath'
 		},
 		tryPrime: 'a[href="/gp/prime/ref=nav_prime_try_btn',
@@ -566,7 +612,7 @@ module.exports = {
 			locateStrategy: 'xpath'
 		},
 		ccYear: {
-			selector: '(//button[@class="a-button-text a-declarative"])[2]',
+			selector: '(//button[@class="a-button-text a-declarative"])[2]', 
 			locateStrategy: 'xpath'
 		},
 		ccAddCard: '#ccAddCard', //Add credit card button
@@ -587,11 +633,18 @@ module.exports = {
 		trackPackage: '#a-autoid-3-announce',
 
 		//cancelling order
-		cancelReason: 'option[value="mistake"]',
+		cancelReasonList: 'option[value="mistake"]',
 		cancelItem: '#Cancel-items_1',
-		cancelReason:  'option[value="mistake"]', //'select[name="cancel.reason',
-		cancelButton: 'input[type="image',
+		cancelReason:  'select[name="cancel.reason',
+		cancelButton: '#cancelButton',
 		orderCancelled: 'h4[class="a-alert-heading"]', //This order has been cancelled.
 		continueShop: 'a[href="/ref=od_aui_cancelled_keep_shop',
+		accountOrders: '#yourOrdersBannersContainer',
+		controlContainer: '#controlsContainer',
+		itemOrderedContainer: '#ordersContainer',
+		itemOrdered: {
+			selector: '(//a[@class="a-link-normal"])[6]',
+			locateStrategy: 'xpath'
+		},
 	}
 };
