@@ -39,7 +39,7 @@ var loginCommands = {
 	passPage: function () {
 		return this
 			.waitForElementPresent('body', 2000)
-			.waitForElementVisible('@inputPass', 2000)
+			.waitForElementVisible('@inputPass', 5000)
 			.verify.visible('@inputPass')
 	},
 	submit: function () {
@@ -67,7 +67,7 @@ var loginCommands = {
 		return this
 			.verify.valueContains('@inputEmail', '')
 			.click('@contButton')
-			.verify.containsText('@error', )
+			// .verify.containsText('@error', )
 			.verify.visible('@error')
 	},
 	validErrorPass: function () {
@@ -82,7 +82,7 @@ var loginCommands = {
 			.waitForElementPresent('body', 2000)
 			// .assert.visible('@amaIcon')
 			// .assert.title('Amazon Sign In')
-			.waitForElementPresent('@cr8Acc', 2000)
+			.waitForElementPresent('@cr8Acc', 5000)
 			.verify.visible('@cr8Acc')
 			.verify.containsText('@cr8Acc', 'Create your Amazon account')
 			.click('@cr8Acc')
@@ -386,7 +386,7 @@ var loginCommands = {
 			.click('@deliverBut')
 			
 			.waitForElementVisible('body', 5000)
-			.verify.elementPresent('@primeBox')
+			// .verify.elementPresent('@primeBox')
 			.waitForElementVisible('@placeOrder', 5000)
 			.verify.elementPresent('@placeOrder')
 			.click('@placeOrder')
@@ -401,13 +401,13 @@ var loginCommands = {
 			.click('@orders')
 
 
-			.waitForElementVisible('@accountOrders', 2000)
+			.waitForElementVisible('@accountOrders', 5000)
 			.verify.elementPresent('@accountOrders')
 			.waitForElementVisible('@controlContainer', 2000)
 			.verify.elementPresent('@controlContainer')
 			.waitForElementVisible('@itemOrderedContainer', 2000)
 			.verify.elementPresent('@itemOrderedContainer')
-			.waitForElementVisible('@itemOrdered', 2000)
+			.waitForElementVisible('@itemOrdered', 5000)
 			.verify.elementPresent('@itemOrdered')
 			.getText('@itemOrdered', function (result) {
 				console.log('THIS IS YOUR ORDERED ITEM:', result.value);

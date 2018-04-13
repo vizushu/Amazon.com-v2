@@ -1,15 +1,15 @@
-// const data = require('../test-assets/testData')
+const data = require('../test-assets/testData')
 
-// module.exports = {
-//   'Load main content': function (browser) {
-//     var content = browser.page.commandsLogin();
+module.exports = {
+  'Load main content': function (browser) {
+    var content = browser.page.commandsLogin();
 
-//     content.navigate()
-//       .validatePage()
-//       .initialPage(data.titlepage)
-//       .mainContent()
+    content.navigate()
+      .validatePage()
+      .initialPage(data.titlepage)
+      .mainContent()
 
-//     browser.end();
-//   },
+    browser.end();
+  },
 
-// };
+};
