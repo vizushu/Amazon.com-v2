@@ -399,9 +399,7 @@ var loginCommands = {
 			.waitForElementPresent('@orders', 5000)
 			.verify.elementPresent('@orders')
 			.click('@orders')
-	},
-	cancelOrder: function () {
-		return this
+
 
 			.waitForElementVisible('@accountOrders', 2000)
 			.verify.elementPresent('@accountOrders')
@@ -442,9 +440,9 @@ var loginCommands = {
 			.click('@cancelButton')
 
 			.waitForElementVisible('@orderCancelled', 2000)
-			.verify.elementNotPresent('@orderCancelled')
+			.verify.elementPresent('@orderCancelled')
 			.waitForElementVisible('@continueShop', 2000)
-			.verify.elementNotPresent('@orderCancelled')
+			.verify.elementPresent('@orderCancelled')
 			
 	}
 
@@ -641,7 +639,7 @@ module.exports = {
 		cancelButton: '#cancelButton',
 		orderCancelled: 'h4[class="a-alert-heading"]', //This order has been cancelled.
 		continueShop: 'a[href="/ref=od_aui_cancelled_keep_shop',
-		accountOrders: '#yourOrdersBannersContainer',
+		accountOrders: 'div[class="a-column a-span6"]',
 		controlContainer: '#controlsContainer',
 		itemOrderedContainer: '#ordersContainer',
 		itemOrdered: {
