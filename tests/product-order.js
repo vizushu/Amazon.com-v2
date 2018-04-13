@@ -41,6 +41,9 @@ module.exports = {
             .orderToCart()
             .proceedCheckOut()
             .addCreditCard()
+            .initialPage('Select a Payment Method - Amazon.com Checkout')
+            browser.pause(2000)
+        product.addCreditCard2()
 
     },
     'Check order placed': function (browser) {

@@ -350,16 +350,6 @@ var loginCommands = {
 			.waitForElementPresent('div[class="field-span spacing-top-large card-images"]', 2000)
 			.verify.elementPresent('div[class="field-span spacing-top-large card-images"]')
 
-			.waitForElementVisible('@ccMonth', 2000)
-            .verify.elementPresent('@ccMonth')
-            .click('@ccMonth')
-            .waitForElementVisible('@ccMonth7', 2000) //cant get pass this
-            .verify.elementPresent('@ccMonth7')
-			.click('@ccMonth7')
-
-			.waitForElementPresent('div[class="field-span spacing-top-large card-images"]', 2000)
-			.verify.elementPresent('div[class="field-span spacing-top-large card-images"]')
-			
 			.waitForElementVisible('@ccYear', 2000)
             .verify.elementPresent('@ccYear')
 			.click('@ccYear')
@@ -370,6 +360,18 @@ var loginCommands = {
             .waitForElementVisible('@ccYear2020', 5000)
 			.verify.elementPresent('@ccYear2020')
 			.click('@ccYear2020')
+	},
+	addCreditCard2: function () {
+		return this
+			.waitForElementVisible('@ccMonth', 2000)
+            .verify.elementPresent('@ccMonth')
+            .click('@ccMonth')
+            .waitForElementVisible('@ccMonth7', 2000) //cant get pass this
+            .verify.elementPresent('@ccMonth7')
+			.click('@ccMonth7')
+
+			.waitForElementPresent('div[class="field-span spacing-top-large card-images"]', 2000)
+			.verify.elementPresent('div[class="field-span spacing-top-large card-images"]')
 
 			.waitForElementPresent('div[class="field-span spacing-top-large card-images"]', 2000)
 			.verify.elementPresent('div[class="field-span spacing-top-large card-images"]')
@@ -378,14 +380,14 @@ var loginCommands = {
             .verify.elementPresent('@ccAddCard')
             .click('@ccAddCard')
             .waitForElementVisible('body', 2000)
-            .waitForElementVisible('@submit', 2000)
-            .click('@submit')
+            .waitForElementVisible('#continue-top', 2000)
+            .click('#continue-top')
 			.verify.elementNotPresent('@error')
 			.click('@deliverBut')
 			
-			.waitForElementVisible('body', 2000)
-			// .verify.elementPresent('@primeBox')
-			.waitForElementVisible('@placeOrder', 2000)
+			.waitForElementVisible('body', 5000)
+			.verify.elementPresent('@primeBox')
+			.waitForElementVisible('@placeOrder', 5000)
 			.verify.elementPresent('@placeOrder')
 			.click('@placeOrder')
 			.waitForElementPresent('@success', 5000)
