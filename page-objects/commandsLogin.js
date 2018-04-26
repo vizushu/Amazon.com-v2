@@ -537,7 +537,10 @@ module.exports = {
 
 		//search result
 		price: '#priceblock_ourprice',
-		result: 'a[class="a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal"]',
+		result: {
+			selector: '//*[@id="result_2"]/div/div/div/div[2]/div[1]/div[1]/a',
+			locateStrategy: 'xpath'
+		},
 		resultImg: '#imgTagWrapperId',
 		itemTitle: '#productTitle',
 
